@@ -1,45 +1,39 @@
 <?php
-
-// Lab 2C: Constructors, Constants, and Inheritance
-
-echo '<h1>Lab 2C: User and Tutor Classes</h1>';
-
-function cleanText($value)
-{
-    // TODO: Return the value with extra spaces removed.
+// 1. cleanText function
+function cleanText($text) {
+    return trim(preg_replace('/\s+/', ' ', $text));
 }
 
-class User
-{
-    public const STATUS_ACTIVE = 'active';
+// 2. Base User class
+class User {
+    const STATUS_ACTIVE = 'active';
 
     public $name;
     public $email;
     public $status;
 
-    public function __construct($name, $email)
-    {
-        // TODO: Clean and store the name.
-        // TODO: Clean, lowercase, and store the email.
-        // TODO: Assign STATUS_ACTIVE to status.
+    public function __construct($name, $email) {
+        $this->name = cleanText($name);
+        $this->email = strtolower(trim($email));
+        $this->status = self::STATUS_ACTIVE;
     }
 }
 
-class Tutor extends User
-{
+// 3. Tutor class extending User
+class Tutor extends User {
     public $subject;
 
-    public function __construct($name, $email, $subject)
-    {
-        // TODO: Call the parent constructor.
-        // TODO: Clean and store the subject.
+    public function __construct($name, $email, $subject) {
+        parent::__construct($name, $email);
+        $this->subject = cleanText($subject);
     }
 
-    public function profileSummary()
-    {
-        // TODO: Return the tutor's name, email, and subject.
+    public function profileSummary() {
+        return "Tutor Summary: " . $this->name . " | Email: " . $this->email . " | Subject: " . $this->subject . " | Status: " . $this->status;
     }
 }
 
-// TODO: Create a Tutor object using sample data.
-// TODO: Display profileSummary().
+// 4. Instantiate and display a Tutor object
+$tutor = new Tutor("  Sarah   Connor ", "  SARAH.C@EXAMPLE.COM ", " Computer Science ");
+echo $tutor->profileSummary();
+?>

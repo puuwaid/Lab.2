@@ -1,98 +1,79 @@
 <?php
+// 1. Arithmetic expression using variables, operators, parentheses, and abs()
+$val1 = -15;
+$val2 = 5;
+$result = abs(($val1 + 10) * $val2);
+echo "Arithmetic Result: $result <br><br>";
 
-// Lab 2: PHP Expressions and Control Structures
+// 2. Boolean comparisons using == and ===
+$numString = "10";
+$numInteger = 10;
+echo "Loose (==): " . ($numString == $numInteger ? "True" : "False") . "<br>";
+echo "Strict (===): " . ($numString === $numInteger ? "True" : "False") . "<br><br>";
 
-echo '<h1>Lab 2A: Expressions and Control Structures</h1>';
+// 3. Unary operators, including incrementing a variable
+$counter = 5;
+$counter++;
+echo "Incremented Counter: $counter <br><br>";
 
-// 1. Expressions and Operators
-echo '<h2>1. Expressions and Operators</h2>';
+// 4. Operator precedence and parentheses
+$calc1 = 2 + 3 * 4;     // Equals 14
+$calc2 = (2 + 3) * 4;   // Equals 20
+echo "Without Parentheses: $calc1 | With Parentheses: $calc2 <br><br>";
 
-$x = -5;
+// 5. Logical operators: &&, ||, and !
+$hasHighGPA = true;
+$hasDisciplineRecord = false;
+if ($hasHighGPA && !$hasDisciplineRecord) {
+    echo "Eligible for honors program.<br><br>";
+}
 
-// TODO: Write an expression that calculates:
-// y = 3(abs(2x) + 4)
-$y = 0;
+// 6. If...else statement determining scholarship eligibility from GPA
+$gpa = 3.6;
+if ($gpa >= 3.5) {
+    echo "Eligible for general scholarship.<br>";
+} else {
+    echo "Not eligible for general scholarship.<br>";
+}
+echo "<br>";
 
-echo "The value of y is: $y<br>";
+// 7. If...elseif...else statement determining full, partial, or no scholarship
+if ($gpa >= 3.8) {
+    echo "Scholarship Status: Full Scholarship<br>";
+} elseif ($gpa >= 3.2) {
+    echo "Scholarship Status: Partial Scholarship<br>";
+} else {
+    echo "Scholarship Status: No Scholarship<br>";
+}
+echo "<br>";
 
-// 2. Boolean Comparisons
-echo '<h2>2. Comparisons</h2>';
+// 8. Switch statement displaying a message based on access status
+$accessStatus = "admin";
+switch ($accessStatus) {
+    case "admin":
+        echo "Access Level: Full Administrative Access<br>";
+        break;
+    case "tutor":
+        echo "Access Level: Tutor Portal Access<br>";
+        break;
+    default:
+        echo "Access Level: Guest Access<br>";
+        break;
+}
+echo "<br>";
 
-// TODO: Use var_dump() to compare:
-// 2 > 1
-// 2 == 3
-// "5" == 5
-// "5" === 5
+// 9. While loop repeating while fuel remains above a stated level
+$fuel = 50;
+while ($fuel > 10) {
+    echo "Fuel level: $fuel% - Driving...<br>";
+    $fuel -= 15;
+}
+echo "Low fuel warning reached!<br><br>";
 
-// 3. Unary Operators
-echo '<h2>3. Unary Operators</h2>';
-
-$c = 5;
-
-// TODO: Create variables that demonstrate unary minus, unary plus,
-// and pre-increment. Display the results.
-
-// 4. Operator Precedence
-echo '<h2>4. Operator Precedence</h2>';
-
-// TODO: Compare the results of these two expressions:
-// 2 + 3 * 4
-// (2 + 3) * 4
-
-// 5. Assignment Associativity
-echo '<h2>5. Assignment Associativity</h2>';
-
-// TODO: Assign 0 to $level, $score, and $time in one statement.
-// Display each variable.
-
-// 6. Equality and Assignment
-echo '<h2>6. Equality and Assignment</h2>';
-
-// TODO: Create variables with equal and unequal values.
-// Use var_dump() to compare them with == and ===.
-
-// 7. Logical Operators
-echo '<h2>7. Logical Operators</h2>';
-
-$a = 1;
-$b = 0;
-
-// TODO: Use var_dump() to demonstrate &&, ||, and !.
-
-// 8. Scholarship Decision with if...else
-echo '<h2>8. Scholarship Decision with if...else</h2>';
-
-$gpa = 3.59;
-
-// TODO: Use if...else to display whether the student receives a scholarship.
-
-// 9. Scholarship Decision with if...elseif...else
-echo '<h2>9. Scholarship Decision with if...elseif...else</h2>';
-
-// TODO: Use if...elseif...else to display:
-// Full scholarship for GPA 3.7 or higher
-// Partial scholarship for GPA 3.5 through 3.69
-// No scholarship otherwise
-
-// 10. Access Status
-echo '<h2>10. Access Status</h2>';
-
-$status = 'pending';
-
-// TODO: Use a switch statement to display a message for:
-// approved, pending, and all other statuses
-
-// 11. While Loop
-echo '<h2>11. While Loop</h2>';
-
-$fuel = 10;
-
-// TODO: Create a while loop.
-// Display "There is enough fuel" while fuel is greater than 1.
-// Decrease fuel during each repetition.
-
-// 12. Multiplication Table
-echo '<h2>12. Multiplication Table</h2>';
-
-// TODO: Create a for loop that displays the 12-times table
-// from 1 through 12.
+// 10. For loop displaying a multiplication table
+echo "<strong>5x Multiplication Table:</strong><br>";
+for ($i = 1; $i <= 5; $i++) {
+    $product = 5 * $i;
+    echo "5 x $i = $product <br>";
+}
+?>
